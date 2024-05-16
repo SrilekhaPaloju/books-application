@@ -1,0 +1,6 @@
+
+###
+GET http://localhost:4004/BookSRV/Books(342f45da-e2d3-45e8-8d2b-7a88d2a443f5)?$select=AuthorName,ID,Stock,title&$expand=address($select=ID,address,city,landmark,pincode,street),bookdetails($select=ID,PageCount,PublishedOn,genre,language) HTTP/1.1
+
+###
+GET http://localhost:4004/BookSRV/Books(342f45da-e2d3-45e8-8d2b-7a88d2a443f5)/address HTTP/1.1

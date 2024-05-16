@@ -1,0 +1,72 @@
+{
+    "name": "Managed-approuter",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+        "@sap/xssec": "^3",
+        "express": "^4",
+        "npx": "^10.2.2",
+        "passport": "^0.7.0"
+    },
+    "devDependencies": {
+        "@cap-js/sqlite": "^1",
+        "@sap/cds-dk": "^7.8.2",
+        "@sap/ux-specification": "^1.120.10",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-books_details": "cds watch --open books_details/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy Managed-approuter --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-booksfiorielement": "cds watch --open booksfiorielement/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "[devlopment]": {
+                    "kind": "sqlite"
+                },
+                "[production]": {
+                    "kind": "hana"
+                }
+            },
+            "[production]": {
+                "auth": "xsuaa"
+            },
+            "[development]": {
+                "auth": {
+                    "kind": "mocked",
+                    "users": {
+                        "admin@sap.com": {
+                            "password": "Initial",
+                            "ID": "admin@sap.com",
+                            "roles": [
+                                "Admin"
+                            ]
+                        },
+                        "user@sap.com": {
+                            "password": "Initial",
+                            "ID": "user@sap.com",
+                            "roles": [
+                                "User"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sapux": [
+        "app/booksfiorielement",
+        "app/booksfiorielement",
+        "app/booksfiorielement"
+    ]
+}

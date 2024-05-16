@@ -1,0 +1,58 @@
+ <core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+ <Table
+        id="idBookdetailsTable"
+        alternateRowColors="true"
+        items="{bookdetails}"
+    >
+        <columns>
+            <Column id="idPagecountColumn">
+                <Title
+                    id="idPagecountColumnHeader"
+                    text="Page Count"
+                />
+            </Column>
+            <Column id="idPublishedOnColumn">
+                <Title
+                    id="idPublishedOnColumnHeader"
+                    text="Published On"
+                />
+            </Column>
+            <Column id="idGenreColumn">
+                <Title
+                    id="idGenreColumnHeader"
+                    text="Genre"
+                />
+            </Column>
+            <Column id="idLanguageColumn">
+                <Title
+                    id="idLanguageColumnHeader"
+                    text="Language"
+                />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem id="idBookdetailsColumnList">
+                <Text
+                    id="idPageCountColumnValue"
+                    text="{PageCount}"
+                />
+                <Text
+                    id="idPublishedOnColumnValue"
+                    text="{PublishedOn}"
+                />
+                <Text
+                    id="idGenreColumnValue"
+                    text="{genre}"
+                />
+                <Text
+                    id="idLanguageColumnValue"
+                    text="{language}"
+                />
+            </ColumnListItem>
+        </items>
+    </Table>
+    </core:FragmentDefinition>

@@ -1,0 +1,85 @@
+<mvc:View
+    controllerName="com.app.booksdetails.controller.Details"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:uxap="sap.uxap"
+    displayBlock="true"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <uxap:ObjectPageLayout
+        id="idBookDetailsObjectPage"
+        upperCaseAnchorBar="true"
+    >
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle id="idObjectPageDynamicTitle">
+                <uxap:expandedHeading>
+                    <Title
+                        id="idBookDetailsTitle"
+                        text="{AuthorName}"
+                    />
+                </uxap:expandedHeading>
+                 <uxap:actions>
+                  <Button
+                        id="idBtnDelete"
+                        icon="sap-icon://delete"
+                        tooltip="Delete Employee"
+                        type="Negative"
+                        press="onDeleteBook"
+                    />
+                </uxap:actions>
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+        <uxap:sections>
+            <uxap:ObjectPageSection
+                titleUppercase="true"
+                id="generalInfo"
+                title="General Information"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="idGeneralInfoSubSection">
+                        <uxap:blocks>
+                            <core:Fragment
+                                type="XML"
+                                fragmentName="com.app.booksdetails.fragment.GeneralInformation"
+                            />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection
+                id="idAddressSection"
+                title="Address Details"
+                titleUppercase="true"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="idAddressSubSection">
+                        <uxap:blocks>
+                            <core:Fragment
+                                type="XML"
+                                fragmentName="com.app.booksdetails.fragment.Address"
+                            />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection
+                id="idBookdetailsSection"
+                title="Book Details"
+                titleUppercase="true"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="idBookDetailsSubSection">
+                        <uxap:blocks>
+                            <core:Fragment
+                                type="XML"
+                                fragmentName="com.app.booksdetails.fragment.BookDetails"
+                            />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <form:SimpleForm
+        id="idBookDetailsForm"
+        editable="false"
+        layout="ColumnLayout"
+        columnsM="2"
+        columnsL="3"
+        columnsXL="4"
+    >
+        <Label
+            id="idIdLabel"
+            text="Id"
+        />
+        <Text
+            id="idIdText"
+            text="{ID}"
+        />
+        <Label
+            id="idtitleLabel"
+            text="title"
+        />
+        <Text
+            id="idtitleText"
+            text="{title}"
+        />
+        <Label
+            id="idAuthornameLabel"
+            text="AuthorName"
+        />
+        <Text
+            id="idAuthornameText"
+            text="{AuthorName}"
+        />
+        <Label
+            id="idStockLabel"
+            text="stock"
+        />
+        <Text
+            id="idStockText"
+            text="{Stock}"
+        />
+    </form:SimpleForm>
+</core:FragmentDefinition>
