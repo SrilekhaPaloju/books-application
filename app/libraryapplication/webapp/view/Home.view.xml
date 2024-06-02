@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="com.app.libraryapplication.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+        <f:SimpleForm
+            id="SimpleFormChange354"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            title="Login Details"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="4"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false"
+        >
+            <f:content>
+                <Label
+                    id="_IDGenLabel1"
+                    text="UserName"
+                />
+                <Input
+                    id="_IDGenInput"
+                    value=""
+                    placeholder="Enter your Username"
+                />
+                <Label
+                    id="_IDGenLabel2"
+                    text="Password"
+                />
+                <Input
+                    id="_IDGenInput1"
+                    value=""
+                    placeholder="Enter your Password"
+                    type ="Password"
+                />
+                  <Toolbar id="_IDGenToolbar1">
+				<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+				<Button id="_IDGenButton1" text="Login" press="onPress" />
+				<ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+			</Toolbar>
+            </f:content> 
+        </f:SimpleForm>
+</mvc:View>

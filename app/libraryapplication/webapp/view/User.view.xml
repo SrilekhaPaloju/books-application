@@ -1,0 +1,121 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.libraryapplication.controller.User"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+>
+    <f:DynamicPage
+        id="idBooksListPage"
+        headerExpanded="true"
+    >
+        <f:title>
+            <f:DynamicPageTitle id="idUserPageTitle">
+                <f:heading>
+                    <Title
+                        id="idUserPageHeadingTitle"
+                        text="User Dashboard"
+                    />
+                </f:heading>
+                <!-- <f:expandedContent>
+                    <Label
+                        id="idUserListPageECL"
+                        text="{i18n>user}"
+                    />
+                </f:expandedContent> -->
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader
+                id="idDynamicPageHeader"
+                pinnable="true"
+            >
+                <Label id="_IDGenLabel1" text="Hi {name}, welcome to Central library" />
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table
+                id="idUserDataPage"
+                mode="MultiSelect"
+                alternateRowColors="true"
+                selectionChange="BooksDetails"
+                items=" "
+            >
+                <headerToolbar>
+                    <OverflowToolbar id="idBooksTableHeader">
+                        <Title
+                            id="idBooksheaderTitle"
+                            text="Borrowed Books"
+                        />
+                        <ToolbarSpacer id="idTableHeaderSpacer" />
+                        <Button
+                            id="idBtnAllbooks"
+                            text="All Books"
+                            type="Emphasized"
+                            press="AllBooks"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="idISBNColumn11">
+                        <Title
+                            id="idISBNtitle11"
+                            text="ISBN"
+                        />
+                    </Column>
+                    <Column id="idtitleColumn11">
+                        <Title
+                            id="idBooktitletitle11"
+                            text="Title"
+                        />
+                    </Column>
+                    <!-- <Column id="idBooksidColumn11">
+                        <Title
+                            id="idBooksidtitle11"
+                            text="Books_id"
+                        />
+                    </Column> -->
+
+                    <Column id="idIssueColumn11">
+                        <Title
+                            id="idIssuetitle11"
+                            text="Issue date"
+                        />
+                    </Column>
+                    <Column id="idDueDateColumn11">
+                        <Title
+                            id="idDuedatetitle11"
+                            text="Due Date"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="idColumnListBarrowedbooks" type="Navigation">
+                        <cells>
+                            <Text
+                                id="idLoanIdvalue11"
+                                text= "{books/ISBN}"
+                            />
+                            <Text
+                                id="idBOOKTILTEvalue11"
+                                text="{books/title}"
+                            />
+                            <Text
+                                id="idIssusedatevalue11"
+                                text="{BookLoans/issueDate}"
+                            />
+                            <Text
+                                id="idduedatevalue11"
+                                text="{BookLoans/dueDate}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

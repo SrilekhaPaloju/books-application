@@ -1,0 +1,14 @@
+ID,ISBN,title,author,quantity,AvailableQuantity,genre,status,reservations_ID,
+189805e8-1ddf-11ef-ba51-325096b39f47,978-3-16-148410-0,The Great Gatsby,F. Scott Fitzgerald,5,4,Fiction,Available,97b5d1a2-6f3b-4a61-9e8d-0d6b65b4cc3e,c5cd3a82-1801-11ef-baf8-325096b39f47
+18980854-1ddf-11ef-a102-325096b39f47,978-1-4028-9467-7,To Kill a Mockingbird,Harper Lee,8,0,Fiction,OnLoan,f5e29c47-51fc-4d9c-8e7f-24d3f9d1c162,c5cd3d16-1801-11ef-a34b-325096b39f47
+189808c2-1ddf-11ef-a45f-325096b39f47,978-0-7432-7356-5,1984,George Orwell,12,4,Science Fiction,Reserved,e5b292c7-327f-4d1a-8ef7-39d9d7d1c562,c5cd3db6-1801-11ef-83cf-325096b39f47
+1898091c-1ddf-11ef-a85d-325096b39f47,978-0-452-28423-4,Moby Dick,Herman Melville,4,2,Adventure,Available,f4e29c47-61fc-4d9c-8e7f-15d3f9d1c362,c5cd3e2e-1801-11ef-921e-325096b39f47
+1898096c-1ddf-11ef-8198-325096b39f47,978-0-14-143960-0,Jane Eyre,Charlotte Brontë,7,0,Romance,Reserved,e4b292c7-517f-4d1a-8ef7-49d9d7d1c262,c5cd3e9c-1801-11ef-93fa-325096b39f47
+189809bc-1ddf-11ef-a1a0-325096b39f47,978-0-670-81302-4,The Catcher in the Rye,J.D. Salinger,6,5,Fiction,Available,82f5a289-81cc-41b5-a320-e76f78af7c5f,c5cd3f00-1801-11ef-8ab8-325096b39f47
+18980a02-1ddf-11ef-a030-325096b39f47,978-0-375-75930-0,The Road,Cormac McCarthy,10,8,Post-apocalyptic,OnLoan,b63d59da-5940-4b04-9235-8348853e3d9e,c5cd3f6e-1801-11ef-a9fb-325096b39f47
+18980a48-1ddf-11ef-81f6-325096b39f47,978-0-452-28425-8,Great Expectations,Charles Dickens,3,1,Classic,Reserved,ab16748c-8b8b-4bb1-a1a7-98a7e0b61e32,c5cd3fdc-1801-11ef-87ce-325096b39f47
+18980a8e-1ddf-11ef-9811-325096b39f47,978-0-140-42436-8,Brave New World,Aldous Huxley,9,0,Science Fiction,Available,7a5d3b6f-8c17-41d2-8099-c2b4ef8d33ae,c5cd404a-1801-11ef-9ce6-325096b39f47
+18980ad4-1ddf-11ef-b601-325096b39f47,978-0-7432-7355-8,Lord of the Flies,William Golding,11,2,Fiction,OnLoan,3b67ae9f-d1df-45a1-9a10-9e453d1b79fc,c5cd40b8-1801-11ef-a5c9-325096b39f47
+18980b24-1ddf-11ef-babd-325096b39f47,978-0-452-28423-6,Frankenstein,Mary Shelley,5,5,Horror,Available,f6079f8d-50a7-4ae7-b5b4-50e1a3bbcc8a,c5cd4126-1801-11ef-8bb8-325096b39f47
+18980b6a-1ddf-11ef-b1f1-325096b39f47,978-0-452-28423-7,War and Peace,Leo Tolstoy,2,1,Historical,Reserved,d0d1f6e6-62e3-4f45-9c71-b72bc10cf0a5,c5cd4194-1801-11ef-82ca-325096b39f47
+18980bb0-1ddf-11ef-956d-325096b39f47,978-0-7432-7356-6,Crime and Punishment,Fyodor Dostoevsky,13,7,Philosophical,Available,bc22dd8f-7584-4110-8ea3-4edb6881b938,c5cd4202-1801-11ef-8798-325096b39f47

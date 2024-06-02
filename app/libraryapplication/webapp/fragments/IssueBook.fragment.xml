@@ -1,0 +1,85 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idIssueBookDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="Issue A Book"
+    >
+        <beginButton>
+            <Button
+                id="idIssueBooksButton"
+                text="Issue"
+                press="onIssueBook"
+                type="Success"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="idCancelButton"
+                text="Cancel"
+                press="onCloseIssueDialog"
+                type="Negative"
+            />
+        </endButton>
+        <content>
+            <!-- <HBox
+                id="_IDGenHBox1"
+                class="sapUiTinyMarginTop"
+            >
+            <Label
+                    id="idUserISBNLabel"
+                    text="Scan Book Barcode"
+                />
+                </HBox> -->
+                <!-- <HBox id="_IDGenHBox2">
+                <Input
+                    id="sampleBarcodeScannerResultOne"
+                    type="Text"
+                    placeholder="Enter Result One"
+                    width="20rem"
+                />
+                <ndc:BarcodeScannerButton
+                    id="sampleBarcodeScannerButtonZebraOne"
+                    scanSuccess="onScanSuccessOne"
+                    scanFail="onScanErrorOne"
+                    inputLiveUpdate="onScanLiveUpdate"
+                    dialogTitle="Barcode Scanner"
+                    keepCameraScan="{/keepCameraScanOne}"
+                    class="sampleBarcodeScannerButtonWithZebraEB"
+                />
+            </HBox> -->
+            <Label
+                    id="idISBNLabel_"
+                    text="ISBN"
+                />
+                <Input
+                    id="idISBNIDInput"
+                    value="{ISBN}"
+                />
+              <Label
+                    id="idUserIDLabel"
+                    text="User ID"
+                />
+                <Input
+                    id="idUserIDInput"
+                    value="{UserID}"
+                    
+                />
+                <Label
+                    id="idDueDateLabel"
+                    text="Due date"
+                />
+                <Input
+                    id="idDueDateInput"
+                    value="{Duedate}"
+                />
+        </content>
+    </Dialog>
+</core:FragmentDefinition>
