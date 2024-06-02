@@ -71,7 +71,7 @@
                             />
                             <Text
                                 id="idLoanTableUserIdValue"
-                                text="{user/username}"
+                                text="{user/name}"
                             />
                             <Text
                                 id="idLoanTableBookNameValue"
