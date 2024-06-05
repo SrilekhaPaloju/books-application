@@ -2,21 +2,20 @@ namespace my.bookshop;
 
 using {cuid} from '@sap/cds/common';
 
-entity Books : cuid{
-        ISBN         : String;
-        title        : String;
-        author       : String;
-        quantity     : Integer;
-        AvailableQuantity:Integer;
-        genre        : String;
-        status       : String enum {
-            Available;
-            Reserved;
-            OnLoan
-        };
-        loans        : Association to many BookLoan;
-        reservations : Association to many Reservation;
-        userss : Composition of many Users on userss.books = $self;
+entity Books : cuid {
+    ISBN              : String;
+    title             : String;
+    author            : String;
+    quantity          : Integer;
+    AvailableQuantity : Integer;
+    genre             : String;
+    status            : String;
+    loans             : Association to many BookLoan;
+    reservations      : Composition of many Reservation
+                            on reservations.bookID = $self;
+    userss            : Composition of many Users
+                            on userss.books = $self;
+
 }
 
 entity Users {
@@ -26,11 +25,10 @@ entity Users {
         name          : String;
         email         : String;
         borrowedbooks : Integer;
-        usertype      :String;
-        user_loans    : Composition of many Activeloans
-                            on user_loans.user = $self;
+        usertype      : String;
+        user_loans    : Composition of many Activeloans on user_loans.user = $self;
         BookLoans     : Association to one BookLoan;
-        books : Association to Books;
+        books         : Association to Books;
 
 
 }
@@ -42,28 +40,22 @@ entity BookLoan {
         issueDate  : Date;
         dueDate    : Date;
         returnDate : Date;
-        status     : String enum {
-            Active;
-            Returned
-        };
-        users      : Composition of many Users
-                         on users.BookLoans = $self;
+        status     : String enum {Active;Returned};
+        users      : Composition of many Users on users.BookLoans = $self;
+
 
 }
 
 entity Reservation {
-    key ID              : UUID;
-        bookID          : Association to Books;
-        userID          : Association to Users;
-        reservationDate : DateTime;
-        status          : String enum {
-            Pending;
-            Available
-        };
+    key ID            : UUID;
+        bookID        : Association to Books;
+        userID        : Association to Users;
+        ReserverdBook : String;
+        resevedate    : Date;
 }
 
 entity Activeloans : cuid {
-    user : Association to Users;
-    dueDate: Date;
+    user    : Association to Users;
+    dueDate : Date;
 
 }

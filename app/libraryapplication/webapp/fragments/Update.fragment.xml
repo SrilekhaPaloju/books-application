@@ -12,9 +12,9 @@
     >
         <beginButton>
             <Button
-                id="_idAddBooks"
-                text="create"
-                press="onCreateBook"
+                id="idUpdateBooks"
+                text="Update"
+                press="onUpdateBook"
                 type="Success"
             />
         </beginButton>
@@ -22,7 +22,7 @@
             <Button
                 id="idCancelBookButton"
                 text="Cancel"
-                press="onCloseCreateDialog"
+                press="onCloseUpdateDialog"
                 type="Negative"
             />
         </endButton>
@@ -51,7 +51,7 @@
                 />
                 <Input
                     id="idISBNInput"
-                    value="{localModel>/ISBN}"
+                    value="{newBookModel>/ISBN}"
                 />
                 <Label
                     id="idBooktitleLabel"
@@ -59,7 +59,7 @@
                 />
                 <Input
                     id="idBooktitleInput"
-                    value="{localModel>/title}"
+                    value="{newBookModel>/title}"
                 />
                 <Label
                     id="idAuthorNameLabel"
@@ -67,7 +67,7 @@
                 />
                 <Input
                     id="idAuthorNameInput"
-                    value="{localModel>/author}"
+                    value="{newBookModel>/author}"
                 />
                 <Label
                     id="idGenreLabel"
@@ -75,7 +75,7 @@
                 />
                 <Input
                     id="idGenreInput"
-                    value="{localModel>/genre}"
+                    value="{newBookModel>/genre}"
                 />
                 <Label
                     id="idQuantityLabel"
@@ -83,8 +83,16 @@
                 />
                 <Input
                     id="idQuantityInput"
-                    value="{localModel>/quantity}"
+                    value="{newBookModel>/quantity}"
                 />
+                   <!-- <Label
+                    id="idStatusLabel"
+                    text="Status"
+                />
+                <Input
+                    id="idStatusInput"
+                    value="{newBookModel>/status}"
+                /> -->
             </form:SimpleForm>
         </content>
     </Dialog>

@@ -21,12 +21,6 @@
                         text="User Dashboard"
                     />
                 </f:heading>
-                <!-- <f:expandedContent>
-                    <Label
-                        id="idUserListPageECL"
-                        text="{i18n>user}"
-                    />
-                </f:expandedContent> -->
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
@@ -43,7 +37,6 @@
                 mode="MultiSelect"
                 alternateRowColors="true"
                 selectionChange="BooksDetails"
-                items=" "
             >
                 <headerToolbar>
                     <OverflowToolbar id="idBooksTableHeader">
@@ -94,7 +87,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem id="idColumnListBarrowedbooks" type="Navigation">
+                    <ColumnListItem id="idColumnListBarrowedbooks">
                         <cells>
                             <Text
                                 id="idLoanIdvalue11"

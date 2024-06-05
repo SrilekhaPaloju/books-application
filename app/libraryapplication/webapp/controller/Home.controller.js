@@ -9,7 +9,7 @@ sap.ui.define([
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageToast, JSONModel,Filter,FilterOperator,Fragment) {
+    function (Controller, MessageToast, JSONModel, Filter, FilterOperator, Fragment) {
         "use strict";
 
         return Controller.extend("com.app.libraryapplication.controller.Home", {
@@ -21,7 +21,7 @@ sap.ui.define([
             //     var oView = this.getView();
             //     var sUserName = oView.byId("_IDGenInput").getValue();
             //     var sPassword = oView.byId("_IDGenInput1").getValue();
-    
+
             //     if (sUserName === "admin" && sPassword === "Initial") {
             //         // Route to the next page
             //         var oRouter = this.getOwnerComponent().getRouter();
@@ -84,8 +84,8 @@ sap.ui.define([
                     MessageToast.show("An error occurred during login.");
                 });
             }
-            })
         })
-    
-      
+    })
+
+
 

@@ -20,7 +20,7 @@
             >
                 <headerToolbar>
                     <Toolbar id="idToolBar">
-                        <ToolbarSpacer id="idSpacer" />
+                        <ToolbarSpacer id="idSpacerButtons" />
                         <Button
                             id="iddeleteBtn"
                             text="Close Loan"
@@ -30,7 +30,7 @@
                             tooltip="Delete"
                         />
                         <Button
-                            id="idCloseBTN"
+                            id="idCloseLoanBTN"
                             text="close"
                             press="onCloseActiveLoans"
                         />

@@ -1,0 +1,98 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+>
+    <Dialog
+        id="idReserveBooksDailog"
+        resizable="true"
+        draggable="true"
+        contentWidth="85%"
+        contentHeight="85%"
+        title="Reserved Books"
+    >
+        <content>
+            <Table
+                id="idReserveTable"
+                inset="false"
+                mode="MultiSelect"
+                items="{/Reservation}"
+            >
+                <headerToolbar>
+                    <Toolbar id="idReserveToolBar">
+                        <ToolbarSpacer id="idSpacer" />
+                        <Button
+                            id="idDeleteBTN"
+                            tooltip="delete"
+                            press="onDeleteReserveDialog"
+                            icon="sap-icon://delete"
+                        />
+                        <Button
+                            id="idCloseBookBTN"
+                            text="close"
+                            press="onCloseReserveDialog"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="idReserveTablecol1">
+                        <Text
+                            id="idReseveID"
+                            text="Reservation ID"
+                        />
+                    </Column>
+                    <Column id="idReservetabcol2">
+                        <Text
+                            id="idColBookID"
+                            text="User ID"
+                        />
+                    </Column>
+                    <Column id="idReservetabcol3">
+                        <Text
+                            id="idUserID"
+                            text="User name"
+                        />
+                    </Column>
+                    <Column id="idBooktabcol4">
+                        <Text
+                            id="idBooktitle"
+                            text="Book Title"
+                        />
+                    </Column>
+                    <Column id="idresrvdatetabcol4">
+                        <Text
+                            id="idreservedate"
+                            text="Reserve Date"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="idresvColListItems">
+                        <cells>
+                            <Text
+                                id="idresvIdValue"
+                                text="{ID}"
+                            />
+                            <Text
+                                id="idresvUserIdValue"
+                                text="{userID/ID}"
+                            />
+                            <Text
+                                id="idreBookIdValue"
+                                text="{userID/name}"
+                            />
+                            <Text
+                                id="idBooktitleValue"
+                                text="{bookID/title}"
+                            />
+                            <Text
+                                id="idreReserDateValue"
+                                text="{resevedate}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

@@ -72,6 +72,15 @@
                     value="{UserID}"
                     
                 />
+                 <!-- <Label
+                    id="idReservationIDLabel"
+                    text="Reservation ID"
+                />
+                <Input
+                    id="idReserIDInput"
+                    value="{Reservation ID}"
+                    
+                /> -->
                 <Label
                     id="idDueDateLabel"
                     text="Due date"

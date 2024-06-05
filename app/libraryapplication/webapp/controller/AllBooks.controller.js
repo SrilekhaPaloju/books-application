@@ -1,109 +1,25 @@
-// sap.ui.define([
-//     "./BaseController",
-//    "sap/ui/model/json/JSONModel",
-//    "sap/m/Token",
-//    "sap/ui/model/Filter",
-//    "sap/ui/model/FilterOperator",
-//    "sap/ui/core/Element",
-//    "sap/m/MessageBox"
-   
-// ], function (Controller, JSONModel, MessageBox, Token, Filter, FilterOperator, ) {
-//    "use strict";
-
-//    return Controller.extend("com.app.libraryapplication.controller.AllBooks", {
-//     onInit: function () {
-//        const oView = this.getView(),
-//                     oMulti1 = this.oView.byId("multiInput1"),
-//                     oMulti2 = this.oView.byId("multiInput2"),
-//                     oMulti3 = this.oView.byId("multiInput3"),
-//                     oMulti4 = this.oView.byId("multiInput4");
-//         let validae = function (arg) {
-//             if (true) {
-//                 var text = arg.text;
-//                 return new sap.m.Token({ key: text, text: text });
-//             }
-//         }
-//         oMulti1.addValidator(validae);
-//         oMulti2.addValidator(validae);
-//         oMulti3.addValidator(validae);
-//         oMulti4.addValidator(validae);
-//     },
-    
-//     onGoPress: function () {
-//           //  const oView = this.getView(),
-//             oISBN = oView.byId("multiInput1"),
-//             sISBN = oISBN.getTokens(),
-//             oTitle = oView.byId("multiInput2"),
-//             sTitle = oTitle.getTokens(),
-//             oAuthor = oView.byId("multiInput3"),
-//             sAuthor = oAuthor.getTokens(),
-//             oGenre = oView.byId("multiInput4"),
-//             sGnere = oGenre.getTokens(),
-//             oTable = oView.byId("idBooksTable"),
-//             aFilters = [];
-
-//         // passing the multitokens
-
-//         sISBN.filter((ele) => {
-//             ele ? aFilters.push(new Filter("ISBN", FilterOperator.EQ, ele.getKey())) : " ";
-//         })
-//         sTitle.forEach(ele => {
-//             if (ele) {
-//                 aFilters.push(new Filter("title", FilterOperator.EQ, ele.getKey()));
-//             }
-//         });
-
-//         sAuthor.filter((ele) => {
-//             ele ? aFilters.push(new Filter("author", FilterOperator.EQ, ele.getKey())) : " ";
-//         })
-
-//         sGnere.filter((ele) => {
-//             ele ? aFilters.push(new Filter("genre", FilterOperator.EQ, ele.getKey())) : " ";
-//         })
-//         oTable.getBinding("items").filter(aFilters);
-//     },
-//     onClearFilterPress: function () {
-//         const oView = this.getView(),
-//         oISBN = oView.byId("multiInput1").destroyTokens(),
-//         oTitle = oView.byId("multiInput2").destroyTokens(),
-//         oAuthor = oView.byId("multiInput3").destroyTokens();
-//     },
-
-//         onReserveBook: function() {
-//             var selectedBook = this.getView().byId("idBooksTable").getSelectedItem();
-//             if (!selectedBook) {
-//                 sap.m.MessageBox.error("Please select a book to reserve.");
-//                 return;
-//             }
-
-//             var bookTitle = selectedBook.getBindingContext().getObject().title;
-//             var bookStatus = selectedBook.getBindingContext().getObject().status;
-
-//             if (bookStatus === "Reserved") {
-//                 sap.m.MessageBox.information("The book '" + bookTitle + "' is already Reserved.");
-//             } else {
-//                 sap.m.MessageBox.success("You have successfully reserved the book '" + bookTitle + "'.");
-//             }
-//         },
-// });
-// });
-
-
-
-
-
 sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
     "sap/m/Token",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/m/MessageBox"
-], function (Controller, JSONModel, Token, Filter, FilterOperator, MessageBox) {
+    "sap/m/MessageBox",
+    "sap/ui/core/library",
+    "sap/ui/Device",
+    "sap/m/NotificationListItem",
+    "sap/m/MessageToast",
+    "sap/ui/model/odata/v2/ODataModel"
+], function (Controller, JSONModel, ODataModel, Filter, FilterOperator, MessageBox, MessageToast, coreLibrary, Device, NotificationListItem,) {
     "use strict";
+
+    var Priority = coreLibrary.Priority;
 
     return Controller.extend("com.app.libraryapplication.controller.AllBooks", {
         onInit: function () {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
+
             const oView = this.getView(),
                 oMulti1 = oView.byId("multiInput1"),
                 oMulti2 = oView.byId("multiInput2"),
@@ -122,7 +38,15 @@ sap.ui.define([
             oMulti3.addValidator(validate);
             oMulti4.addValidator(validate);
         },
-
+        onCurrentUserDetails: function (oEvent) {
+            const { id } = oEvent.getParameter("arguments");
+            this.ID = id;
+            // const sRouterName = oEvent.getParameter("name");
+            const oForm = this.getView().byId("idBooksListPage");
+            oForm.bindElement(`/Users(${id})`, {
+                expand: ''
+            });
+        },
         onGoPress: function () {
             const oView = this.getView(),
                 oISBN = oView.byId("multiInput1"),
@@ -178,22 +102,36 @@ sap.ui.define([
             // Clear filters and refresh the table
             oTable.getBinding("items").filter([]);
         },
-
-        onReserveBook: function () {
-            var selectedBook = this.getView().byId("idBooksTable").getSelectedItem();
-            if (!selectedBook) {
-                sap.m.MessageBox.error("Please select a book to reserve.");
-                return;
+        onReserveBook: async function (oEvent) {
+            var oSelectedItem = oEvent.getSource();
+           // console.log(oSelectedItem)
+           // console.log(this.ID)
+            console.log(oEvent.getSource().getParent())
+            var userId = this.ID
+            if (this.byId("idBooksTable").getSelectedItems().length > 1) {
+              MessageToast.show("Please Select only one Book");
+              return
             }
-
-            var bookTitle = selectedBook.getBindingContext().getObject().title;
-            var bookStatus = selectedBook.getBindingContext().getObject().status;
-
-            if (bookStatus === "Reserved") {
-                sap.m.MessageBox.information("The book '" + bookTitle + "' is already Reserved.");
-            } else {
-                sap.m.MessageBox.success("You have successfully reserved the book '" + bookTitle + "'.");
+            var oSelectedBook = this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject()
+     
+            const userModel = new sap.ui.model.json.JSONModel({
+              userID_ID: userId,
+              bookID_ID: oSelectedBook.ID,
+              resevedate: new Date(),
+            });
+            this.getView().setModel(userModel, "userModel");
+     
+            const oPayload = this.getView().getModel("userModel").getProperty("/"),
+              oModel = this.getView().getModel("ModelV2");
+     
+            try {
+              await this.createData(oModel, oPayload, "/Reservation");
+              MessageBox.success("Book Reserved");
+            } catch (error) {
+              //this.oCreateBooksDialog.close();
+              MessageBox.error("Some technical Issue");
             }
-        }
+          }
+
     });
 });

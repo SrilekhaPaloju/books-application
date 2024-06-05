@@ -93,10 +93,6 @@
                     id="idGoButton"
                     class="sapUiSmallMarginEnd"
                 >
-                    <Label
-                        id="idGoButtonLabel"
-                        text=""
-                    />
                     <Button
                         id="idGoButtonValue"
                         text="Go"
@@ -108,24 +104,11 @@
                     id="idClearFilterButton"
                     class="sapUiSmallMarginEnd"
                 >
-                    <Label
-                        id="idClearFilterButtonLabel"
-                        text=""
-                    />
                     <Button
                         id="idClearFilterButtonValue"
                         text="Clear Filter"
                         type="Emphasized"
                         press="onClearFilterPress"
-                    />
-                </VBox>
-                 <VBox
-                    id="idBorrowedBooksButton"
-                    class="sapUiSmallMarginEnd"
-                >
-                    <Label
-                        id="idBorrowedBooksButtonLabel"
-                        text=""
                     />
                 </VBox>
             </HBox>
@@ -186,10 +169,6 @@
         >
             <headerToolbar>
                 <OverflowToolbar id="idBooksTableHeader">
-                    <!-- <Title
-                   id="idTableHeaderTitle"
-                   text="Availbel Stock :{/Books/$count} Books"
-                /> -->
                     <ToolbarSpacer id="idTableHeaderSpacer" />
                     <Button
                         id="idBtnReserve"
@@ -224,10 +203,10 @@
                         text="Genre"
                     />
                 </Column>
-                <Column id="idStatusCol">
+                <Column id="idAvailableQuantityCol">
                     <Title
-                        id="idStatusColTitle"
-                        text="Status"
+                        id="idAvailableQuantityColTitle"
+                        text="Available Quantity"
                     />
                 </Column>
             </columns>
@@ -251,8 +230,8 @@
                             text="{genre}"
                         />
                         <Text
-                            id="idStatusValue"
-                            text="{status}"
+                            id="idAvailableQuantityValue"
+                            text="{AvailableQuantity}"
                         />
                     </cells>
                 </ColumnListItem>

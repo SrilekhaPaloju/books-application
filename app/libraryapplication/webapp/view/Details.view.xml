@@ -61,6 +61,12 @@
                         text="Active Loans"
                         press="onActiveLoansClick"
                     />
+                     <Button
+                        id="idReservedBookStock"
+                        type="Default"
+                        text="Reserved Books"
+                        press="onReservedBooksClick"
+                    />
                     </VBox>
                 </Toolbar>
                 <ToolbarSpacer id="_IDGenToolbarSpacer2" />
@@ -130,6 +136,18 @@
                         text="Quantity"
                     />
                 </Column>
+                <Column id="idAvailableQuantityCol">
+                    <Title
+                        id="idAvailableQuantityColTitle"
+                        text="Available Quantity"
+                    />
+                </Column>
+                 <!-- <Column id="idStatusCol">
+                    <Title
+                        id="idStatusColTitle"
+                        text="Status"
+                    />
+                </Column> -->
             </columns>
             <items>
                 <ColumnListItem id="idBooksTableColListItem">
@@ -154,6 +172,14 @@
                             id="idquantityValue"
                             text="{quantity}"
                         />
+                        <Text
+                            id="idAvailableQuantityValue"
+                            text="{AvailableQuantity}"
+                        />
+                         <!-- <Text
+                            id="idStatusValue"
+                            text="{status}"
+                        /> -->
                     </cells>
                 </ColumnListItem>
             </items>
