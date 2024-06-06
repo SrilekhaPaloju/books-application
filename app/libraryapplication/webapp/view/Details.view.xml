@@ -87,7 +87,7 @@
                     <Button
                         id="idBtnAdd"
                         type="Default"
-                        press="onAddButton"
+                        press="onAddBookButton"
                         text="Add Books"
                     />
                     <Button

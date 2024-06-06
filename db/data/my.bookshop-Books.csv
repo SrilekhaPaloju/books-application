@@ -6,7 +6,7 @@ ID,ISBN,title,author,quantity,AvailableQuantity,genre,status,loans_ID,
 1898096c-1ddf-11ef-8198-325096b39f47,978-0-14-143960-0,Jane Eyre,Charlotte Brontë,7,0,Romance,Reserved,e4b292c7-517f-4d1a-8ef7-49d9d7d1c262,c5cd3e9c-1801-11ef-93fa-325096b39f47
 189809bc-1ddf-11ef-a1a0-325096b39f47,978-0-670-81302-4,The Catcher in the Rye,J.D. Salinger,6,5,Fiction,Available,82f5a289-81cc-41b5-a320-e76f78af7c5f,c5cd3f00-1801-11ef-8ab8-325096b39f47
 18980a02-1ddf-11ef-a030-325096b39f47,978-0-375-75930-0,The Road,Cormac McCarthy,10,8,Post-apocalyptic,Available,b63d59da-5940-4b04-9235-8348853e3d9e,c5cd3f6e-1801-11ef-a9fb-325096b39f47
-18980a8e-1ddf-11ef-9811-325096b39f47,978-0-140-42436-8,Brave New World,Aldous Huxley,9,0,Science Fiction,Reserved,7a5d3b6f-8c17-41d2-8099-c2b4ef8d33ae,c5cd404a-1801-11ef-9ce6-325096b39f47
+18980a48-1ddf-11ef-81f6-325096b39f47,978-0-140-42436-8,Brave New World,Aldous Huxley,9,0,Science Fiction,Reserved,7a5d3b6f-8c17-41d2-8099-c2b4ef8d33ae,c5cd404a-1801-11ef-9ce6-325096b39f47
 18980ad4-1ddf-11ef-b601-325096b39f47,978-0-7432-7355-8,Lord of the Flies,William Golding,11,2,Fiction,Available,3b67ae9f-d1df-45a1-9a10-9e453d1b79fc,c5cd40b8-1801-11ef-a5c9-325096b39f47
 18980b24-1ddf-11ef-babd-325096b39f47,978-0-452-28423-6,Frankenstein,Mary Shelley,5,5,Horror,Available,f6079f8d-50a7-4ae7-b5b4-50e1a3bbcc8a,c5cd4126-1801-11ef-8bb8-325096b39f47
 18980b6a-1ddf-11ef-b1f1-325096b39f47,978-0-452-28423-7,War and Peace,Leo Tolstoy,2,1,Historical,Available,d0d1f6e6-62e3-4f45-9c71-b72bc10cf0a5,c5cd4194-1801-11ef-82ca-325096b39f47

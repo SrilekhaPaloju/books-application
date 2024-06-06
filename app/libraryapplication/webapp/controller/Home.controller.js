@@ -16,26 +16,6 @@ sap.ui.define([
             onInit: function () {
 
             },
-            // onPress: function () {
-            //     debugger;
-            //     var oView = this.getView();
-            //     var sUserName = oView.byId("_IDGenInput").getValue();
-            //     var sPassword = oView.byId("_IDGenInput1").getValue();
-
-            //     if (sUserName === "admin" && sPassword === "Initial") {
-            //         // Route to the next page
-            //         var oRouter = this.getOwnerComponent().getRouter();
-            //      oRouter.navTo("RouteDetails");  // Assuming 'nextPage' is the route name in your manifest.json
-            //     } 
-            //     else if(sUserName === "user1" && sPassword === "password123"){
-            //         var oRouter = this.getOwnerComponent().getRouter();
-            //      oRouter.navTo("RouteUser");  
-            //     }
-            //     else {
-            //         // Show an error message
-            //         MessageToast.show("Invalid username or password");
-            //     }
-            //},
             onPress: function () {
                 var oView = this.getView();
 

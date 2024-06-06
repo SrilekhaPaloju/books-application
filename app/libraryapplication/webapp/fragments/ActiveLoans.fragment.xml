@@ -16,7 +16,7 @@
                 id="idLoanTable"
                 inset="false"
                 mode="MultiSelect"
-                items="{/Activeloans}"
+                items="{/BooksLoan}"
             >
                 <headerToolbar>
                     <Toolbar id="idToolBar">
@@ -37,49 +37,74 @@
                     </Toolbar>
                 </headerToolbar>
                 <columns>
-                    <Column id="idLoanTablecol1">
-                        <Text
-                            id="idUserName"
-                            text="User ID"
+                    <Column id="ididColumn">
+                        <Title
+                            id="ididtitle"
+                            text="BooksLoanId"
                         />
                     </Column>
-                    <Column id="idLoanTablecol2">
-                        <Text
-                            id="idColUserID"
-                            text="User Name"
+                    <Column id="idUserColumn">
+                        <Title
+                            id="idUsertitle"
+                            text="UserID"
                         />
                     </Column>
-                    <Column id="idLoanTablecol5">
-                        <Text
-                            id="idUsername"
-                            text="ISBN"
+                    <Column id="idUserNameColumn">
+                        <Title
+                            id="idUserNametitle"
+                            text="UserName"
                         />
                     </Column>
-                    <Column id="idLoanTablecol4">
-                        <Text
-                            id="idDueDate"
-                            text="Due Date"
+                    <Column id="idBooksColumn">
+                        <Title
+                            id="idBookstitle"
+                            text="BooksISBN"
+                        />
+                    </Column>
+
+                    <Column id="iddueColumn">
+                        <Title
+                            id="idduetitle"
+                            text="Duedate"
+                        />
+                    </Column>
+                    <Column id="idbodColumn">
+                        <Title
+                            id="idbodtitle"
+                            text="LoanDatee"
                         />
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem id="idLoanTableColListItems">
+                    <ColumnListItem id="idColumnListBooksLoan">
                         <cells>
                             <Text
-                                id="idLoanTableNameValue"
-                                text="{user/ID}"
+                                id="idBISBNvalue"
+                                text="{ID}"
                             />
                             <Text
-                                id="idLoanTableUserIdValue"
-                                text="{user/name}"
+                                id="idBUservalue"
+                                text="{users/ID}"
                             />
                             <Text
-                                id="idLoanTableBookNameValue"
-                                text="{ActiveloanModel>/user/books/ISBN}"
+                                id="idBUserNamevalue"
+                                text="{users/name}"
                             />
                             <Text
-                                id="idLoanTableDueDateValue"
-                                text="{dueDate}"
+                                id="idBdatevalue"
+                                text="{books/ISBN}"
+                            />
+                            <Text
+                                id="idbodvalue"
+                                text="{duedate}"
+                            />
+                            <Text
+                                id="idduevalue"
+                                text="{loandate}"
+                            />
+                            <Text
+                                id="idavl_stovalue"
+                                text="{books/avl_stock}"
                             />
                         </cells>
                     </ColumnListItem>

@@ -37,6 +37,7 @@
                 mode="MultiSelect"
                 alternateRowColors="true"
                 selectionChange="BooksDetails"
+                includeItemInSelection="false"
             >
                 <headerToolbar>
                     <OverflowToolbar id="idBooksTableHeader">
@@ -99,11 +100,11 @@
                             />
                             <Text
                                 id="idIssusedatevalue11"
-                                text="{BookLoans/issueDate}"
+                                text="{books/loans/0/loandate}"
                             />
                             <Text
                                 id="idduedatevalue11"
-                                text="{BookLoans/dueDate}"
+                                text="{books/loans/0/duedate}"
                             />
                         </cells>
                     </ColumnListItem>

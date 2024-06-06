@@ -4,10 +4,8 @@ sap.ui.define([
     "sap/ui/core/Element",
     "sap/m/MessageToast",
     "sap/ndc/BarcodeScanner",
-
 ], function (Controller, JSONModel, MessageToast, ODataModel) {
     "use strict";
-
     return Controller.extend("com.app.libraryapplication.controller.Details", {
         onInit: function () {
             var oModel = new JSONModel({
@@ -30,12 +28,12 @@ sap.ui.define([
             });
             this.getView().setModel(ActiveloanModel, "ActiveloanModel");
         },
-        onAddButton: async function () {
+        onAddBookButton: async function () {
             if (!this.oCreateBookDialog) {
                 this.oCreateBookDialog = await this.loadFragment("AddBooks")
-                this.oCreateBookDialog1 = await this.loadFragment("IssueBook")
+                 this.oCreateBookDialog1 = await this.loadFragment("IssueBook")
                 this.oActiveLoanPopUp = await this.loadFragment("ActiveLoans")
-                this.oEditBooksDialog = await this.loadFragment("Update"); 
+                 this.oEditBooksDialog = await this.loadFragment("Update");
             }
             this.oCreateBookDialog.open();
         },
@@ -43,14 +41,6 @@ sap.ui.define([
             if (this.oCreateBookDialog.isOpen()) {
                 this.oCreateBookDialog.close()
             } refresh
-        },
-        OnIssueBooks: async function () {
-            if (!this.oCreateBookDialog1) {
-                this.oCreateBookDialog1 = await this.loadFragment("IssueBook")
-                this.oCreateBookDialog = await this.loadFragment("AddBooks")
-                this.oActiveLoanPopUp = await this.loadFragment("ActiveLoans")
-            }
-            this.oCreateBookDialog1.open();
         },
         onCloseIssueDialog: function () {
             if (this.oCreateBookDialog1.isOpen()) {
@@ -62,6 +52,7 @@ sap.ui.define([
             if (!this.oReserveBookDialog) {
                 this.oReserveBookDialog = await this.loadFragment("ReservedBooks")
                 this.oActiveLoanPopUp = await this.loadFragment("ActiveLoans")
+                this.oCreateBookDialog = await this.loadFragment("AddBooks")
             }
             this.oReserveBookDialog.open();
 
@@ -109,32 +100,113 @@ sap.ui.define([
             }
         },
 
-        onIssueBook: async function () {
+        OnIssueBooks: async function (oEvent) {
             debugger
-            var oView1 = this.getView();
-            var sUserID = oView1.byId("idUserIDInput").getValue();
-            var sISBN = oView1.byId("idISBNIDInput").getValue();
-            var sDueDate = oView1.byId("idDueDateInput").getValue();
-            var oData1 = oView1.getModel("ActiveloanModel").getProperty("/");
-            //var sReservationID = oView1.byId("idReserIDInput").getValue();
-            oData1.user.ID = sUserID;
-            oData1.user.books.ISBN = sISBN;
-            oData1.dueDate = sDueDate;
-           // oData1.user.books.reservations.ID = sReservationID;
-
-            var oModel1 = this.getView().getModel("ModelV2");
-            try {
-                await this.createIssue(oModel1, oData1, "/Activeloans");
-                this.getView().byId("idLoanTable").getBinding("items").refresh(); 
-                this.oCreateBookDialog1.close();
+            var asel = this.byId("idBooksTable").getSelectedItem();
+            var oavl_stock = asel.getBindingContext().getProperty("AvailableQuantity")
+             
+            if(oavl_stock==0){
+                sap.m.MessageBox.success("Availability stock is ZERO!!")
             }
-            catch (error) {
-                this.oCreateBookDialog1.close();
-                sap.m.MessageToast.show("Some technical Issue");
+            else{
+            if (asel) {
+
+                var abooks_ID = asel.getBindingContext().getProperty("ID");
+            }
+           
+
+            // var oSelectedBook = this.byId("_IDGenTable1").getSelectedItem().getBindingContext().getObject();
+           
+            var oSelectedBook = this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject();
+            console.log(oSelectedBook);
+ 
+            var oSelectedItem = oEvent.getSource().getParent();
+            var oSelectedBook1 = oSelectedItem.getBindingContext()
+ 
+ 
+           
+                if (typeof oSelectedBook.AvailableQuantity === 'number') {
+                    oSelectedBook.AvailableQuantity = Math.max(0, oSelectedBook.AvailableQuantity - 1);
+                   // oSelectedBook.AvailableQuantity=oSelectedBook.setValue(oSelectedBook.AvailableQuantity)
+ 
+                   
+                    // Update the avl_stock value in the "Books" entity set
+                  delete oSelectedBook['@$ui5.context.isSelected'];
+                    var oModel = this.getView().getModel("ModelV2");
+                    try {
+                        await oModel.update("/Books(" + oSelectedBook.ID + ")", oSelectedBook);
+                        this.byId("idBooksTable").getBinding("items").refresh();
+                        console.log("success")
+                    } catch (error) {
+                        console.error("Error updating book AvailableQuantity:", error);
+                    }
+                }
+           
+   
+            var currentDate = new Date();
+
+            // Format the current date
+            var year = currentDate.getFullYear();
+            var month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            var day = String(currentDate.getDate()).padStart(2, '0');
+            var formattedDate = year + '-' + month + '-' + day;
+           
+            // Add 20 days to the current date
+            currentDate.setDate(currentDate.getDate() + 20);
+           
+            // Get the year, month, and day components after adding 20 days
+            var yearAfter20Days = currentDate.getFullYear();
+            var monthAfter20Days = String(currentDate.getMonth() + 1).padStart(2, '0');
+            var dayAfter20Days = String(currentDate.getDate()).padStart(2, '0');
+           
+            // Format the date after adding 20 days in "yyyy-mm-dd" format
+            var formattedDateAfter20Days = yearAfter20Days + '-' + monthAfter20Days + '-' + dayAfter20Days;
+
+            var newLoanModel = new sap.ui.model.json.JSONModel({
+                users_ID: " ",
+                books_ID: abooks_ID,
+                duedate: formattedDateAfter20Days,
+                loandate: formattedDate,
+                Active: true,
+               
+
+            });
+            this.getView().setModel(newLoanModel, "newLoanModel")
+
+            if (!this.oIssueBooksDialog) {
+                this.oIssueBooksDialog = await this.loadFragment("IssueBook"); // Load your fragment asynchronously
             }
 
+            this.oIssueBooksDialog.open();
+        }
         },
-         onCloseIssueDialog: function () {
+        onIssueBook: async function () {
+                const oPayload = this.getView().getModel("newLoanModel").getProperty("/");
+           
+                const oModel = this.getView().getModel("ModelV2");
+ 
+                try {
+                    // Attempt to create data
+                    await this.createData(oModel, oPayload, "/BooksLoan");
+               
+                    // If successful, refresh the binding of the items associated with user loans
+                    var userLoansControl = this.getView().byId("idLoanTable");
+               
+                        console.log("Dialog:", this.oIssueBooksDialog); // Check if the dialog object is correctly referenced
+                        this.oIssueBooksDialog.close(); // Attempt to cl
+                        sap.m.MessageBox.success("Book Issued Successfully")
+                    }  
+                catch (error) {
+                    // Handle the error
+                    console.error("Error occurred while saving:", error);
+               
+                    // Display a user-friendly error message
+                    sap.m.MessageBox.error("Failed to save the data. Please try again later.");
+                    console.log("Dialog:", this.oIssueBooksDialog); // Check if the dialog object is correctly referenced
+this.oIssueBooksDialog.close(); // Attempt to cl
+                }
+        },
+        onCloseIssueDialog: function () {
             this.getView().byId("idIssueBookDialog").close();
         },
 
@@ -147,6 +219,7 @@ sap.ui.define([
             if (!this.oActiveLoanPopUp) {
                 this.oActiveLoanPopUp = await this.loadFragment("ActiveLoans")
                 this.oReserveBookDialog = await this.loadFragment("ReservedBooks")
+                this.oCreateBookDialog = await this.loadFragment("AddBooks")
 
             }
             this.oActiveLoanPopUp.open();
@@ -188,7 +261,7 @@ sap.ui.define([
                 var oAuthor = oBindingContext.getProperty("author");
                 var oQuantity = oBindingContext.getProperty("quantity");
                 var oGenre = oBindingContext.getProperty("genre");
-                var oStatus = oBindingContext.getProperty("status");
+                var oAquan = oBindingContext.getProperty("AvailableQuantity");
 
                 var newBookModel = new sap.ui.model.json.JSONModel({
                     ID: oID,
@@ -198,13 +271,13 @@ sap.ui.define([
                     quantity: oQuantity,
                     genre: oGenre,
                     ISBN: oISBN,
-                    status: oStatus
+                    AvailableQuantity: oAquan
                 });
                 this.getView().setModel(newBookModel, "newBookModel");
 
                 if (!this.oEditBooksDialog) {
                     this.oEditBooksDialog = await this.loadFragment("Update");
-                    this.oCreateBookDialog = await this.loadFragment("AddBooks") 
+                    this.oCreateBookDialog = await this.loadFragment("AddBooks")
                 }
 
                 this.oEditBooksDialog.open();

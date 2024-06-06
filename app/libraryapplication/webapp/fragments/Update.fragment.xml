@@ -4,7 +4,7 @@
     xmlns="sap.m"
 >
     <Dialog
-        id="idCreateBookDialog"
+        id="idUpdateBookDialog"
         resizable="true"
         draggable="true"
         contentWidth="30%"
@@ -12,7 +12,7 @@
     >
         <beginButton>
             <Button
-                id="idUpdateBooks"
+                id="_idUpdateBooks"
                 text="Update"
                 press="onUpdateBook"
                 type="Success"
@@ -28,7 +28,7 @@
         </endButton>
         <content>
             <form:SimpleForm
-                id="idEmployeeDetailsForm"
+                id="idUpdateBookDetailsForm"
                 editable="true"
                 layout="ResponsiveGridLayout"
                 labelSpanXL="3"
@@ -50,49 +50,49 @@
                     text="ISBN"
                 />
                 <Input
-                    id="idISBNInput"
+                    id="idUpdateISBNInput"
                     value="{newBookModel>/ISBN}"
                 />
                 <Label
-                    id="idBooktitleLabel"
+                    id="idUpdateBooktitleLabel"
                     text="Book title"
                 />
                 <Input
-                    id="idBooktitleInput"
+                    id="idUpdateBooktitleInput"
                     value="{newBookModel>/title}"
                 />
                 <Label
-                    id="idAuthorNameLabel"
+                    id="idUpdateAuthorNameLabel"
                     text="Author Name"
                 />
                 <Input
-                    id="idAuthorNameInput"
+                    id="idUpdateAuthorNameInput"
                     value="{newBookModel>/author}"
                 />
                 <Label
-                    id="idGenreLabel"
+                    id="idUpdateGenreLabel"
                     text="Genre"
                 />
                 <Input
-                    id="idGenreInput"
+                    id="idUpdateGenreInput"
                     value="{newBookModel>/genre}"
                 />
                 <Label
-                    id="idQuantityLabel"
+                    id="idUpdateQuantityLabel"
                     text="Quantity"
                 />
                 <Input
-                    id="idQuantityInput"
+                    id="idUpdateQuantityInput"
                     value="{newBookModel>/quantity}"
                 />
-                   <!-- <Label
-                    id="idStatusLabel"
-                    text="Status"
+                   <Label
+                    id="idUpdateAvailableQuantityLabel"
+                    text="Available Quantity"
                 />
                 <Input
-                    id="idStatusInput"
-                    value="{newBookModel>/status}"
-                /> -->
+                    id="idUpdateAvailableQuantityInput"
+                    value="{newBookModel>/AvailableQuantity}"
+                />
             </form:SimpleForm>
         </content>
     </Dialog>

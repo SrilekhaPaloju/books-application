@@ -61,7 +61,7 @@
                 />
                 <Input
                     id="idISBNIDInput"
-                    value="{ISBN}"
+                    value="{newLoanModel>/books_ID}"
                 />
               <Label
                     id="idUserIDLabel"
@@ -69,7 +69,7 @@
                 />
                 <Input
                     id="idUserIDInput"
-                    value="{UserID}"
+                    value="{newLoanModel>/users_ID}"
                     
                 />
                  <!-- <Label
@@ -87,7 +87,7 @@
                 />
                 <Input
                     id="idDueDateInput"
-                    value="{Duedate}"
+                    value="{newLoanModel>/duedate}"
                 />
         </content>
     </Dialog>

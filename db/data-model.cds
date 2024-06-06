@@ -10,7 +10,7 @@ entity Books : cuid {
     AvailableQuantity : Integer;
     genre             : String;
     status            : String;
-    loans             : Association to many BookLoan;
+    loans             : Association to many BooksLoan;
     reservations      : Composition of many Reservation
                             on reservations.bookID = $self;
     userss            : Composition of many Users
@@ -27,23 +27,30 @@ entity Users {
         borrowedbooks : Integer;
         usertype      : String;
         user_loans    : Composition of many Activeloans on user_loans.user = $self;
-        BookLoans     : Association to one BookLoan;
+        bookLoans     : Composition of many BooksLoan on bookLoans.users = $self;
         books         : Association to Books;
 
 
 }
 
-entity BookLoan {
-    key ID         : UUID;
-        bookID     : Association to Books;
-        userID     : Association to Users;
-        issueDate  : Date;
-        dueDate    : Date;
-        returnDate : Date;
-        status     : String enum {Active;Returned};
-        users      : Composition of many Users on users.BookLoans = $self;
+// entity BookLoan {
+//     key ID         : UUID;
+//         bookID     : Association to Books;
+//         userID     : Association to Users;
+//         issueDate  : Date;
+//         dueDate    : Date;
+//         returnDate : Date;
+//         status     : String enum {Active;Returned};
+//         users      : Composition of many Users on users.bookLoans = $self;
+// }
 
-
+entity BooksLoan:cuid {
+        users    : Association to Users;
+        books    : Association to Books;
+        duedate  : Date;
+        loandate : Date;
+        Active   : Boolean;
+        notify:String;
 }
 
 entity Reservation {

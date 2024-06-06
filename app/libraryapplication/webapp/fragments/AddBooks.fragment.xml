@@ -4,7 +4,7 @@
     xmlns="sap.m"
 >
     <Dialog
-        id="idCreateBookDialog"
+        id="idAddBookDialog"
         resizable="true"
         draggable="true"
         contentWidth="30%"
@@ -12,7 +12,7 @@
     >
         <beginButton>
             <Button
-                id="_idAddBooks"
+                id="idAddBooks"
                 text="create"
                 press="onCreateBook"
                 type="Success"
@@ -20,7 +20,7 @@
         </beginButton>
         <endButton>
             <Button
-                id="idCancelBookButton"
+                id="idCancelBook"
                 text="Cancel"
                 press="onCloseCreateDialog"
                 type="Negative"
@@ -28,7 +28,7 @@
         </endButton>
         <content>
             <form:SimpleForm
-                id="idEmployeeDetailsForm"
+                id="idAddBookDetailsForm"
                 editable="true"
                 layout="ResponsiveGridLayout"
                 labelSpanXL="3"
@@ -46,43 +46,43 @@
                 singleContainerFullSize="false"
             >
                 <Label
-                    id="idISBNLabel"
+                    id="idAddISBNLabel"
                     text="ISBN"
                 />
                 <Input
-                    id="idISBNInput"
+                    id="idAddISBNInput"
                     value="{localModel>/ISBN}"
                 />
                 <Label
-                    id="idBooktitleLabel"
+                    id="idAddBooktitleLabel"
                     text="Book title"
                 />
                 <Input
-                    id="idBooktitleInput"
+                    id="idAddBooktitleInput"
                     value="{localModel>/title}"
                 />
                 <Label
-                    id="idAuthorNameLabel"
+                    id="idAddAuthorNameLabel"
                     text="Author Name"
                 />
                 <Input
-                    id="idAuthorNameInput"
+                    id="idAddAuthorNameInput"
                     value="{localModel>/author}"
                 />
                 <Label
-                    id="idGenreLabel"
+                    id="idAddGenreLabel"
                     text="Genre"
                 />
                 <Input
-                    id="idGenreInput"
+                    id="idAddGenreInput"
                     value="{localModel>/genre}"
                 />
                 <Label
-                    id="idQuantityLabel"
+                    id="idAddQuantityLabel"
                     text="Quantity"
                 />
                 <Input
-                    id="idQuantityInput"
+                    id="idAddQuantityInput"
                     value="{localModel>/quantity}"
                 />
             </form:SimpleForm>
