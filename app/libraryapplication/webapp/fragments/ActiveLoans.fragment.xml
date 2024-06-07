@@ -104,7 +104,7 @@
                             />
                             <Text
                                 id="idavl_stovalue"
-                                text="{books/avl_stock}"
+                                text="{books/AvailableQuantity}"
                             />
                         </cells>
                     </ColumnListItem>

@@ -24,7 +24,6 @@ entity Users {
         password      : String;
         name          : String;
         email         : String;
-        borrowedbooks : Integer;
         usertype      : String;
         user_loans    : Composition of many Activeloans on user_loans.user = $self;
         bookLoans     : Composition of many BooksLoan on bookLoans.users = $self;

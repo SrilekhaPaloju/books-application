@@ -110,26 +110,18 @@ sap.ui.define([
             }
             else{
             if (asel) {
-
                 var abooks_ID = asel.getBindingContext().getProperty("ID");
             }
-           
-
-            // var oSelectedBook = this.byId("_IDGenTable1").getSelectedItem().getBindingContext().getObject();
            
             var oSelectedBook = this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject();
             console.log(oSelectedBook);
  
             var oSelectedItem = oEvent.getSource().getParent();
             var oSelectedBook1 = oSelectedItem.getBindingContext()
- 
- 
            
                 if (typeof oSelectedBook.AvailableQuantity === 'number') {
                     oSelectedBook.AvailableQuantity = Math.max(0, oSelectedBook.AvailableQuantity - 1);
-                   // oSelectedBook.AvailableQuantity=oSelectedBook.setValue(oSelectedBook.AvailableQuantity)
- 
-                   
+                               
                     // Update the avl_stock value in the "Books" entity set
                   delete oSelectedBook['@$ui5.context.isSelected'];
                     var oModel = this.getView().getModel("ModelV2");
@@ -152,7 +144,7 @@ sap.ui.define([
             var formattedDate = year + '-' + month + '-' + day;
            
             // Add 20 days to the current date
-            currentDate.setDate(currentDate.getDate() + 20);
+            currentDate.setDate(currentDate.getDate() + 15);
            
             // Get the year, month, and day components after adding 20 days
             var yearAfter20Days = currentDate.getFullYear();
@@ -195,6 +187,8 @@ sap.ui.define([
                         console.log("Dialog:", this.oIssueBooksDialog); // Check if the dialog object is correctly referenced
                         this.oIssueBooksDialog.close(); // Attempt to cl
                         sap.m.MessageBox.success("Book Issued Successfully")
+                        this.getView().byId("idLoanTable").getBinding("items").refresh();
+                        
                     }  
                 catch (error) {
                     // Handle the error
@@ -229,23 +223,6 @@ this.oIssueBooksDialog.close(); // Attempt to cl
             // this.byId("idActiveLoansTable").close();
             if (this.oActiveLoanPopUp.isOpen()) {
                 this.oActiveLoanPopUp.close();
-            }
-        },
-        onDeleteActiveLoans: function () {
-            var oSelected = this.byId("idLoanTable").getSelectedItem();
-            if (oSelected) {
-                var oUSerID = oSelected.getBindingContext().getObject().sUserID;
-
-                oSelected.getBindingContext().delete("$auto").then(function () {
-                    sap.m.MessageToast.show(" SuccessFully Deleted");
-                },
-                    function (oError) {
-                        sap.m.MessageToast.show("Deletion Error: ", oError);
-                    });
-                this.getView().byId("idIssueBookDialog").getBinding("items").refresh();
-
-            } else {
-                sap.m.MessageToast.show("Please Select a Row to Delete");
             }
         },
         onUpdateButton: async function () {
@@ -331,6 +308,131 @@ this.oIssueBooksDialog.close(); // Attempt to cl
                 sap.m.MessageToast.show("Please Select a Row to Delete");
             }
         },
+        // onDeleteActiveLoans: function () {
+        //     var oSelected = this.byId("idLoanTable").getSelectedItem();
+        //     if (oSelected) {
+        //         var oUSerID = oSelected.getBindingContext().getObject().sUserID;
 
-    });
+        //         oSelected.getBindingContext().delete("$auto").then(function () {
+        //             sap.m.MessageToast.show(" SuccessFully Deleted");
+        //         },
+        //             function (oError) {
+        //                 sap.m.MessageToast.show("Deletion Error: ", oError);
+        //             });
+        //         this.getView().byId("idIssueBookDialog").getBinding("items").refresh();
+
+        //     } else {
+        //         sap.m.MessageToast.show("Please Select a Row to Delete");
+        //     }
+            
+        // },
+
+        // onDeleteActiveLoans:async function(){
+        //     var osel = this.byId("idLoanTable").getSelectedItem().getBindingContext().getObject();
+            
+        //     // var osel = this.byId("idReservedBooksPageTable").getSelectedItem().getBindingContext().getObject();
+        //     console.log(osel);
+  
+        //     // var oSelectedItem = oEvent.getSource().getParent();
+        //     // var oSelectedBook1 = oSelectedItem.getBindingContext().getObject();
+  
+            
+        //         if (typeof osel.books.AvailableQuantity === 'number') {
+        //             osel.books.AvailableQuantity = Math.max(0, osel.books.AvailableQuantity + 1);
+  
+        //             // Update the AvailableQuantity value in the "Books" entity set
+        //             var oModel = this.getView().getModel("ModelV2");
+        //             try {
+        //                 await oModel.update("/Books(" + osel.books.ID + ")", osel.books);
+        //             } catch (error) {
+        //                 console.error("Error updating book AvailableQuantity:", error);
+        //             }
+        //         } else {
+        //             console.error("Quantity is not a number.");
+        //         }
+
+        //     const newUserLoans = new sap.ui.model.json.JSONModel({
+        //       ID:osel.ID,
+        //       books_ID:osel.books.ID,
+        //       users_ID:osel.users.ID,
+        //     //  Active: false,
+  
+        //     });
+  
+        //     this.getView().setModel(newUserLoans, "newUserLoans");
+        //     const oPayload = this.getView().getModel("newUserLoans").getData()
+        //             oModel = this.getView().getModel("ModelV2");
+        //             try {
+        //               // Assuming your update method is provided by your OData V2 model
+        //               oModel.update("/BooksLoan(" + oPayload.ID + ")", oPayload, {
+        //                   success: function() {
+        //                       this.getView().byId("idLoanTable").getBinding("items").refresh();
+        //                       sap.m.MessageBox.success("Loan closed Successfully!!!");
+        //                       // this.oEditBooksDialog.close();
+        //                   }.bind(this),
+        //                   error: function(oError) {
+        //                       // this.oEditBooksDialog.close();
+        //                       sap.m.MessageBox.error("Failed to update book: " + oError.message);
+        //                   }.bind(this)
+        //               });
+        //           } catch (error) {
+        //               // this.oEditBooksDialog.close();
+        //               sap.m.MessageBox.error("Some technical Issue");
+        //           }
+        //           var oModel = new sap.ui.model.odata.v2.ODataModel({
+        //               serviceUrl: "https://port4004-workspaces-ws-466sw.us10.trial.applicationstudio.cloud.sap/v2/odata/v4/catalog/$metadata",
+        //               defaultBindingMode: sap.ui.model.BindingMode.TwoWay,
+        //               // Configure message parser
+        //               messageParser: sap.ui.model.odata.ODataMessageParser
+        //           })  
+      
+        //         }
+
+        onDeleteActiveLoans: async function () {
+            var oSelected = this.byId("idLoanTable").getSelectedItem();
+        
+            if (!oSelected) {
+                sap.m.MessageToast.show("Please select a row to delete");
+                return;
+            }
+        
+            var oContext = oSelected.getBindingContext();
+            var oLoan = oContext.getObject();
+            var sBookID = oLoan.books.ID;
+            var oModel = this.getView().getModel("ModelV2");
+        
+            console.log("Selected Loan:", oLoan);
+        
+            // Update the available quantity of the book
+            if (typeof oLoan.books.AvailableQuantity === 'number') {
+                oLoan.books.AvailableQuantity += 1;
+        
+                try {
+                    await oModel.update(`/Books(${sBookID})`, {
+                        AvailableQuantity: oLoan.books.AvailableQuantity
+                    });
+                   // sap.m.MessageToast.show("Book quantity updated successfully");
+                } catch (error) {
+                    console.error("Error updating book available quantity:", error);
+                    sap.m.MessageBox.error("Error updating book available quantity: " + error.message);
+                    return;
+                }
+            } else {
+                console.error("Available quantity is not a number.");
+                sap.m.MessageBox.error("Available quantity is not a number.");
+                return;
+            }
+        
+            // Delete the loan entry
+            try {
+                await oContext.delete("$auto");
+                this.getView().byId("idLoanTable").getBinding("items").refresh();
+                sap.m.MessageToast.show("Loan closed successfully");
+            } catch (error) {
+                console.error("Error deleting loan:", error);
+                sap.m.MessageBox.error("Error deleting loan: " + error.message);
+            }
+        }
+        
+         });
 });

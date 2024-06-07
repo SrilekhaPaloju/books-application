@@ -112,7 +112,7 @@
                     />
                 </VBox>
             </HBox>
-            <VBox id="_IDGenVBox2">
+            <!-- <VBox id="_IDGenVBox2">
                 <HBox id="_IDGenHBox3">
                     <Toolbar id="_IDGenToolbar1">
                         <ToolbarSpacer id="_IDGenToolbarSpacer1" />
@@ -156,7 +156,7 @@
                     </Toolbar>
                     <ToolbarSpacer id="_IDGenToolbarSpacer2" />
                 </HBox>
-            </VBox>
+            </VBox> -->
         </f:DynamicPageHeader>      
         </f:header>
              <f:content>

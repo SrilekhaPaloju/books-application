@@ -14,7 +14,7 @@
     >
         <beginButton>
             <Button
-                id="idIssueBooksButton"
+                id="_idIssueBooksButton"
                 text="Issue"
                 press="onIssueBook"
                 type="Success"
