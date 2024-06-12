@@ -1,0 +1,118 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idsignupDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="signUp Details"
+    >
+            <form:SimpleForm
+                id="idSimpleForm1"
+                layout="ResponsiveGridLayout"
+            >
+                <form:content>
+ 
+                    <Label id="_IDGenLabel1"
+                        class="username"
+                        text="User name"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        class="input"
+                        id="user1"
+                        placeholder="Enter Username"
+                        width="80%"
+                        textAlign="Initial"
+                        value="{localModel>/username}"
+                    />
+ 
+ 
+                    <Label id="_IDGenLabel2"
+                        class="Password"
+                        text="Password"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        id="password1"
+                        type="Password"
+                        placeholder="Enter Password"
+                        width="80%"
+                        textAlign="Initial"
+                        value="{localModel>/password}"
+                    />
+ 
+                    <Label id="_IDGenLabel3"
+                        class="email"
+                        text="Email"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        class="input"
+                        id="email"
+                        placeholder="Enter email"
+                        width="80%"
+                        textAlign="Initial"
+                        value="{localModel>/email}"
+                    />
+ 
+                    <Label id="_IDGenLabel4"
+                        class="phoneNumber"
+                        text="Phone Number"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        class="input"
+                        id="phoneNumber"
+                        placeholder="Enter PhoneNumber"
+                        width="80%"
+                        textAlign="Initial"
+                        value="{localModel>/phoneNumber}"
+                    />
+                    <!-- <Label id="_IDGenLabel5"
+                        class="Address"
+                        text="Address"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        class="input"
+                        id="Address"
+                        placeholder="Enter Address"
+                        width="80%"
+                        textAlign="Initial"
+                        value="{localModel>/Address}"
+                    /> -->
+ 
+                    <!-- <core:Title id="_IDGenTitle2" />
+                    <VBox id="_IDGenVBox2"
+                        alignItems="Center"
+                        class="sapUiSmallMarginTop"
+                    > -->
+                         <Toolbar id="_IDGenSignupToolbar1">
+				<ToolbarSpacer id="_IDGenSignupToolbarSpacer1"/>
+			<Button
+                           
+                            id="btn1"
+                            text="signup"
+                            type="Emphasized"
+                            width="100%"
+                            press="signupBtnClick"
+                        />
+                         <Button
+                           
+                            id="btn2"
+                            text="Close"
+                            type="Default"
+                            width="100%"
+                            press="onCloseSignUpDialog"
+                        />
+				<ToolbarSpacer id="_IDGenSignupToolbarSpacer5"/>
+			</Toolbar>
+                    <!-- </VBox> -->
+                </form:content>
+            </form:SimpleForm>
+    </Dialog>
+</core:FragmentDefinition>

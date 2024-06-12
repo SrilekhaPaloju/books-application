@@ -7,46 +7,35 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
 >
-        <f:SimpleForm
-            id="SimpleFormChange354"
-            editable="true"
-            layout="ResponsiveGridLayout"
-            title="Login Details"
-            adjustLabelSpan="false"
-            emptySpanXL="4"
-            emptySpanL="4"
-            emptySpanM="4"
-            emptySpanS="0"
-            columnsXL="1"
-            columnsL="1"
-            columnsM="1"
-            singleContainerFullSize="false"
-        >
-            <f:content>
-                <Label
-                    id="_IDGenLabel1"
-                    text="UserName"
-                />
-                <Input
-                    id="_IDGenInput"
-                    value=""
-                    placeholder="Enter your Username"
-                />
-                <Label
-                    id="_IDGenLabel2"
-                    text="Password"
-                />
-                <Input
-                    id="_IDGenInput1"
-                    value=""
-                    placeholder="Enter your Password"
-                    type ="Password"
-                />
-                  <Toolbar id="_IDGenToolbar1">
-				<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
-				<Button id="_IDGenButton1" text="Login" press="onPress" />
-				<ToolbarSpacer id="_IDGenToolbarSpacer2"/>
-			</Toolbar>
-            </f:content> 
-        </f:SimpleForm>
+    <Page
+        id="idBooksListPageTitle"
+        title="{i18n>title}"
+        titleLevel="H4"
+        backgroundDesign="List"
+        class="sample"
+        titleAlignment="Center"
+
+    >
+
+
+        <!-- for mainting buttons in header -->
+        <headerContent>
+        <OverflowToolbar id="_IDGenOverflowToolbar1" class="sapUiContentPadding">
+        <ToolbarSpacer id="_IDGenToolbarSpacer2" />
+            <Button
+                id="_IDGenButton1"
+                text="SignUp"
+                press="onSignUpButton"
+                type="Emphasized"
+            />
+             <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+            <Button
+                id="_IDGenButton2"
+                text="Login"
+                press="onLoginperss"
+                type="Emphasized"
+            />
+            </OverflowToolbar>
+        </headerContent>
+    </Page>
 </mvc:View>

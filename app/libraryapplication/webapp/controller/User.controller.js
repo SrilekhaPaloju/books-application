@@ -40,7 +40,7 @@ sap.ui.define([
             const userID = this.ID
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteAllBooks", {
-                id: userID
+                id: userID,
             });
         }
     });

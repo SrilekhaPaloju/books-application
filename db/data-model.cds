@@ -22,26 +22,15 @@ entity Users {
     key ID            : UUID;
         username      : String;
         password      : String;
-        name          : String;
         email         : String;
         usertype      : String;
+        phoneNumber   : String;
         user_loans    : Composition of many Activeloans on user_loans.user = $self;
         bookLoans     : Composition of many BooksLoan on bookLoans.users = $self;
         books         : Association to Books;
 
 
 }
-
-// entity BookLoan {
-//     key ID         : UUID;
-//         bookID     : Association to Books;
-//         userID     : Association to Users;
-//         issueDate  : Date;
-//         dueDate    : Date;
-//         returnDate : Date;
-//         status     : String enum {Active;Returned};
-//         users      : Composition of many Users on users.bookLoans = $self;
-// }
 
 entity BooksLoan:cuid {
         users    : Association to Users;

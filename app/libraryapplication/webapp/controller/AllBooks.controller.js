@@ -19,6 +19,7 @@ sap.ui.define([
         onInit: function () {
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
+            this.getView().byId("idBooksTable").getBinding("items").refresh()
 
             const oView = this.getView(),
                 oMulti1 = oView.byId("multiInput1"),

@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idLoginDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="Login Details"
+    >
+        <content>
+            <form:SimpleForm
+                id="idAddBookDetailsForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+               <Label
+                    id="_IDLoginGenLabel1"
+                    text="UserName"
+                />
+                <Input
+                    id="_IDLoginGenInput"
+                    value=""
+                    placeholder="Enter your Username"
+                />
+                <Label
+                    id="_IDGenLoginLabel2"
+                    text="Password"
+                />
+                <Input
+                    id="_IDGenLoginInput1"
+                    value=""
+                    placeholder="Enter your Password"
+                    type ="Password"
+                />
+                  <Toolbar id="_IDGenLoginToolbar1">
+				<ToolbarSpacer id="_IDGenLoginToolbarSpacer1"/>
+				<Button id="IDGenLoginButton1" text="Login" press="onPress" type="Emphasized"/>
+                <Button id="IDCancelButton" text="Close" press="onCloseLoginDialog" />
+				<ToolbarSpacer id="_IDGenToolbarSpacer5"/>
+			</Toolbar>
+            </form:SimpleForm>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>
+

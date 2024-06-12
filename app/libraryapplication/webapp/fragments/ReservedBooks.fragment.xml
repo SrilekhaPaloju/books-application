@@ -79,7 +79,7 @@
                             />
                             <Text
                                 id="idreBookIdValue"
-                                text="{userID/name}"
+                                text="{userID/username}"
                             />
                             <Text
                                 id="idBooktitleValue"

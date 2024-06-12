@@ -28,7 +28,7 @@
                 id="idDynamicPageHeader"
                 pinnable="true"
             >
-                <Label id="_IDGenLabel1" text="Hi {name}, welcome to Central library" />
+                <Label id="_IDGenLabel1" text="Hi {username}, welcome to Central library" />
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
@@ -38,6 +38,7 @@
                 alternateRowColors="true"
                 selectionChange="BooksDetails"
                 includeItemInSelection="false"
+               items="{/BooksLoan}"
             >
                 <headerToolbar>
                     <OverflowToolbar id="idBooksTableHeader">
@@ -92,7 +93,7 @@
                         <cells>
                             <Text
                                 id="idLoanIdvalue11"
-                                text= "{books/ISBN}"
+                               text="{books/ISBN}"
                             />
                             <Text
                                 id="idBOOKTILTEvalue11"
@@ -100,11 +101,11 @@
                             />
                             <Text
                                 id="idIssusedatevalue11"
-                                text="{books/loans/0/loandate}"
+                                text="{loandate}"
                             />
                             <Text
                                 id="idduedatevalue11"
-                                text="{books/loans/0/duedate}"
+                                text="{duedate}"
                             />
                         </cells>
                     </ColumnListItem>
